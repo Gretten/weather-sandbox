@@ -13,7 +13,7 @@
     import TitleDisplay from '@/components/TitleDisplay/TitleDisplay.vue';
     import WeatherDisplay from '@/components/WeatherDisplay/WeatherDisplay.vue';
     import DetailsDisplay from '@/components/DetailsDisplay/DetailsDisplay.vue';
-    
+
     export default {
         name: "Page",
         components: {
