@@ -28,6 +28,6 @@
     .details-container {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
+        justify-content: space-between;
     }
 </style>

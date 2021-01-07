@@ -21,8 +21,8 @@
 
 <style lang="scss" scoped>
     .detail-container {
-        height: 100px;
-        width: 100px;
+        height: 108px;
+        width: 108px;
         display: flex;
         flex-direction: column;
         align-items: center;
