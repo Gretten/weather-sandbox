@@ -17,7 +17,7 @@
         justify-content: space-between;
         background: rgb(150,98,162);
         background: linear-gradient(0deg, rgba(150,98,162,1) 0%, rgb(22, 55, 121) 100%);
-        min-width: 364px;
+        max-width: 364px;
         min-height: 647px;
         padding: 25px;
     }

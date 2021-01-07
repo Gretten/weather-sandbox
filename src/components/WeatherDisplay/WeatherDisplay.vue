@@ -43,6 +43,8 @@
     }
     .current-temp {
         font-size: 123px;
+        text-shadow: 2px -2px #02e7df;
+        color: #d7f152;
     }
     .weather-block {
         display: flex;
