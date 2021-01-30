@@ -1,9 +1,20 @@
 <template>
-    <div class="page-background">
-        <Main> 
-            <TitleDisplay />
-            <WeatherDisplay />
-            <DetailsDisplay />
+    <div 
+        class="page-background"
+    >
+        <Main
+            v-if="uploaded"
+        > 
+            <TitleDisplay 
+                :city="city"
+            />
+            <WeatherDisplay 
+                :details="this.weather.mainWeather"
+            />
+            <DetailsDisplay 
+                :details="this.weather.details"
+
+            />
         </Main>
     </div>
 </template>
@@ -13,6 +24,7 @@
     import TitleDisplay from '@/components/TitleDisplay/TitleDisplay.vue';
     import WeatherDisplay from '@/components/WeatherDisplay/WeatherDisplay.vue';
     import DetailsDisplay from '@/components/DetailsDisplay/DetailsDisplay.vue';
+    import dataHandler from '@/api/api.js';
 
     export default {
         name: "Page",
@@ -22,6 +34,23 @@
             WeatherDisplay,
             DetailsDisplay,
         },
+        data() {
+            return {
+                city: 'Prague',
+                weather: {},
+                uploaded: false,
+            }
+        },
+        methods: {
+        },
+        mounted: function() {
+            dataHandler(this.city)
+                .then(res => {
+                    this.weather = res;
+                    this.uploaded = true;
+                })
+        }
+
     }
 </script>
 

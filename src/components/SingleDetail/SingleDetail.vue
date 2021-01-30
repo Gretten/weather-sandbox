@@ -2,18 +2,20 @@
     <div class="detail-container">
         <span class="detail-icon"> {{ detailIcon }} </span>
         <span class="detail-title"> {{ detailTitle }} </span>
-        <span class="detail-data"> {{ detailData }} </span>
+        <span class="detail-data"> {{ detailData }}{{ detailMeasure }} </span>
     </div>
 </template>
 
 <script>
     export default {
         name: 'SingleDetail',
+        props: ['details'],
         data() {
             return {
-                detailIcon: '☀',
-                detailTitle: 'Feels like',
-                detailData: '22°',
+                detailIcon: this.details.icon,
+                detailTitle: this.details.title,
+                detailData: this.details.payload,
+                detailMeasure: this.details.measure,
             }
         },
     }
@@ -21,12 +23,12 @@
 
 <style lang="scss" scoped>
     .detail-container {
-        height: 108px;
-        width: 108px;
+        height: 100px;
+        width: 170px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: space-evenly;
         background: rgba(233, 146, 240, 0.24);
         border-radius: 5px;
         margin-top: 25px;

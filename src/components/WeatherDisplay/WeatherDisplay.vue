@@ -23,13 +23,14 @@
 <script>
     export default {
         name: "WeatherDisplay",
+        props: ['details'],
         data() {
             return {
                 currentIcon: '☾',
-                currentTemp: 23,
-                morningTemp: 28,
-                eveningTemp: 14,
-                weatherStatus: 'Clear'
+                currentTemp: this.details.temp,
+                morningTemp: this.details.temp_min,
+                eveningTemp: this.details.temp_max,
+                weatherStatus: this.details.main,
             }
         },
     }
@@ -43,8 +44,8 @@
     }
     .current-temp {
         font-size: 123px;
-        text-shadow: 2px -2px #02e7df;
-        color: #d7f152;
+        // text-shadow: 2px -2px #02e7df;
+        color: #fdfdfd;
     }
     .weather-block {
         display: flex;

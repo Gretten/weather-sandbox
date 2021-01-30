@@ -1,14 +1,14 @@
 <template>
     <div>
        <LinedHeader />
-       <div class="details-container">
-           <SingleDetail />
-           <SingleDetail />
-           <SingleDetail />
-           <SingleDetail />
-           <SingleDetail />
-           <SingleDetail />
-       </div>
+       <div class="details-container"
+       >
+           <SingleDetail 
+                v-for="item in this.details"
+                :key="item.payload"
+                :details="item"
+           />
+        </div>
     </div>
 </template>
 
@@ -17,6 +17,7 @@
     import SingleDetail from '@/components/SingleDetail/SingleDetail.vue';
     export default {
         name: "DetailsDisplay",
+        props: ['details'],
         components: {
             LinedHeader,
             SingleDetail

@@ -14,7 +14,7 @@
         name: "LinedHeader",
         data() {
             return {
-                header: "Something"
+                header: "Details"
             }
         },
     }

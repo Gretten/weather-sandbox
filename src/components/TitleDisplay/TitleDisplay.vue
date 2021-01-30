@@ -1,7 +1,7 @@
 <template>
     <div class="component-container">
         <div class="title-container">
-            <span class="city">{{ cityName }}</span>
+            <span class="city">{{ city }}</span>
             <span class="date">{{ currentDate }}, {{ currentTime }}</span>
         </div>
 
@@ -11,9 +11,9 @@
 <script>
     export default {
         name: "TitleDisplay",
+        props: ['city'],
         data() {
             return {
-                cityName: 'Hong Kong',
                 currentDate: 'Mon',
                 currentTime: '1:20 am'
             }
