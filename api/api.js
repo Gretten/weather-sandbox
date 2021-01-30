@@ -29,4 +29,4 @@ const dataHandler = ( city ) => {
     })
 }
 
-export default dataHandler;
+dataHandler('Moscow');
