@@ -11,6 +11,9 @@
                 v-if="uploaded"
                 :details="this.weather.mainWeather"
             />
+            <Spinner 
+                v-else
+            />
             <DetailsDisplay 
                 :details="this.weather.details"
 
@@ -24,6 +27,7 @@
     import TitleDisplay from '@/components/TitleDisplay/TitleDisplay.vue';
     import WeatherDisplay from '@/components/WeatherDisplay/WeatherDisplay.vue';
     import DetailsDisplay from '@/components/DetailsDisplay/DetailsDisplay.vue';
+    import Spinner from '@/components/Spinner/Spinner.vue';
     import dataHandler from '@/api/api.js';
 
     export default {
@@ -33,6 +37,7 @@
             TitleDisplay,
             WeatherDisplay,
             DetailsDisplay,
+            Spinner,
         },
         data() {
             return {
@@ -46,7 +51,7 @@
                 this.uploaded = false;
                 dataHandler(val)
                     .then(res => {
-                        console.log(this)
+                        console.log(res)
                         this.weather = res;
                         this.uploaded = true;
                     })

@@ -27,7 +27,7 @@
             },        
         },
         created: function() {
-            this.debouncedQuery = debounce(this.changeRenderedText, 500)
+            this.debouncedQuery = debounce(this.changeRenderedText, 0)
         },
         watch: {
             titleInput: function() {
