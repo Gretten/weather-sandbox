@@ -9,7 +9,11 @@
                 :city="city"
             />
             <WeatherDisplay 
-                :details="this.weather.mainWeather"
+                :currentIcon="this.weather.mainWeather.icon"
+                :currentTemp="this.weather.mainWeather.temp"
+                :morningTemp="this.weather.mainWeather.temp_min"
+                :eveningTemp="this.weather.mainWeather.temp_max"
+                :weatherStatus="this.weather.mainWeather.main"
             />
             <DetailsDisplay 
                 :details="this.weather.details"
@@ -36,7 +40,7 @@
         },
         data() {
             return {
-                city: 'Prague',
+                city: 'Saint Petersburg',
                 weather: {},
                 uploaded: false,
             }

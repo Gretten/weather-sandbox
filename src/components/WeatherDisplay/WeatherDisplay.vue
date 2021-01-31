@@ -1,19 +1,19 @@
 <template>
     <div>
         <div class="weather-title-container">
-            <span> {{ currentIcon }} </span>
-            <span>{{ weatherStatus }}</span>
+            <!-- <span> {{ icon }} </span> -->
+            <span>{{ status }}</span>
         </div>
         <div class="weather-block">
             <div> 
                 <span class="current-temp" >
-                     {{ currentTemp }}°
+                     {{ temp }}°
                 </span> 
                 </div>
             <div class="today-temp-container">
                 <div class="today-temp">
-                    <span class="morning-temp"> {{ morningTemp }}° C</span>
-                    <span class="evening-temp"> {{ eveningTemp }}° C </span>
+                    <span class="morning-temp"> {{ tempM }}° C</span>
+                    <span class="evening-temp"> {{ tempE }}° C </span>
                 </div>
             </div>
         </div>
@@ -23,14 +23,14 @@
 <script>
     export default {
         name: "WeatherDisplay",
-        props: ['details'],
+        props: ['currentIcon', 'currentTemp', 'morningTemp', 'eveningTemp', 'weatherStatus'],
         data() {
             return {
-                currentIcon: '☾',
-                currentTemp: this.details.temp,
-                morningTemp: this.details.temp_min,
-                eveningTemp: this.details.temp_max,
-                weatherStatus: this.details.main,
+                // icon: '*',
+                temp: this.currentTemp,
+                tempM: this.morningTemp,
+                tempE: this.eveningTemp,
+                status: this.weatherStatus,
             }
         },
     }
