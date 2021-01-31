@@ -3,12 +3,13 @@
         <input 
             type="text" 
             v-model="titleInput"
+            @keyup="keyupTrigger"
         />
     </div>
 </template>
 
 <script>    
-    import debounce from '@/assets/functions.js'
+    const debounce = require('debounce')
     export default {
         name: 'EditableHeader',
         props: ['city'],
@@ -17,23 +18,16 @@
                 titleInput: this.city,
             }
         },
-        methods: {
-            changeRenderedText() {
-                if(this.titleInput === '') {
-                    return
-                }
-                this.$emit('queried', this.titleInput)
-                console.log('im here')
-            },        
-        },
         created: function() {
-            this.debouncedQuery = debounce(this.changeRenderedText, 0)
+            this.debouncedQuery = debounce(() => {
+                this.$emit('queried', this.titleInput)
+            }, 500)
         },
-        watch: {
-            titleInput: function() {
+        methods: {
+            keyupTrigger() {
                 this.debouncedQuery()
-            }
-        }
+            }     
+        },
         
     };
 </script>
