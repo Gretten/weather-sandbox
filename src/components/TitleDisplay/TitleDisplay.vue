@@ -17,10 +17,11 @@
 <script>    
     export default {
         name: 'EditableHeader',
+        props: ['city'],
         data () {
             return {
-                titleInput: 'Moscow',
-                renderedText: 'Moscow',
+                titleInput: this.city,
+                renderedText: this.city,
                 editing: false,
             }
         },
@@ -49,13 +50,16 @@
     span, input {
         margin: 0;
         padding: 10px;
-        font-size: 25px;
         color: #fff;
+    }
+    span {
+        font-size: 25px;
     }
     input {
         background: rgba(0,0,0,.1);
         border: none;
         text-align: center;
+        font-size: 23px;
 
     }
     input:focus {

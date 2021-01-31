@@ -2,9 +2,7 @@
     <div 
         class="page-background"
     >
-        <Main
-            
-        > 
+        <Main> 
             <TitleDisplay 
                 :city="city"
                 @queried="makeQuery"
@@ -38,7 +36,7 @@
         },
         data() {
             return {
-                city: 'Saint Petersburg',
+                city: 'Moscow',
                 weather: {},
                 uploaded: false,
             }
