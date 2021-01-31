@@ -1,10 +1,8 @@
-require('dotenv').config({path: '../.env'});
 const fetch = require('node-fetch');
-
-const APIKey = process.env.API_KEY;
+const APIKey = process.env.VUE_APP_API_KEY;
 
 const getServiceResponse = async (city) => {
-    const APILink = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=a0408c4d5fded32e057194a7540e3f41`;
+    const APILink = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`;
 
     let response = await fetch(APILink);
 
@@ -17,7 +15,7 @@ const getServiceResponse = async (city) => {
 }
 
 const dataHandler = ( city ) => {
-    const json = getServiceResponse(city, APIKey);
+    const json = getServiceResponse(city);
     return json.then(res => {
         // some magic from SO
         let result = Object.assign({}, ...function _flatten(o) { return [].concat(...Object.keys(o).map(k => typeof o[k] === 'object' ? _flatten(o[k]) : ({[k]: o[k]})))}(res))
