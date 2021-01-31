@@ -32,22 +32,19 @@
 </script>
 
 <style lang="scss" scoped>
-    span, input {
+    input {
         margin: 0;
         padding: 10px;
         color: #fff;
-    }
-    span {
-        font-size: 25px;
-    }
-    input {
         background: rgba(0,0,0,.1);
         border: none;
         text-align: center;
         font-size: 23px;
-
+        border-radius: 10px;
     }
     input:focus {
-       outline: none;
+        border: none;
+        outline: none;
     }
+
 </style>
