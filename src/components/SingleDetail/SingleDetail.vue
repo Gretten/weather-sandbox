@@ -32,5 +32,10 @@
         background: rgba(233, 146, 240, 0.24);
         border-radius: 5px;
         margin-top: 25px;
+        transition: 0.3s;
+    }
+
+    .detail-container:hover {
+        background: rgba(233, 146, 240, 0.54);
     }
 </style>

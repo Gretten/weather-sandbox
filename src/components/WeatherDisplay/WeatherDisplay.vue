@@ -45,12 +45,16 @@
     .current-temp {
         font-size: 123px;
         // text-shadow: 2px -2px #02e7df;
-        color: #fdfdfd;
+        color: #fdfdfd; 
     }
     .weather-block {
         display: flex;
         padding: 0 27px;
         justify-content: space-around;
+    }
+    .weather-block:hover {
+        animation: pulse 0.5s infinite;
+        animation-timing-function: linear; 
     }
     .today-temp-container {
         display: flex;
@@ -69,5 +73,16 @@
     }
     .evening-temp {
         padding-top: 10px;
+    }
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.02);
+        }
+        100% {
+            transform: scale(1);
+        }
     }
 </style>
