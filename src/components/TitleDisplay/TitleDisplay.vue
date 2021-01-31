@@ -3,12 +3,12 @@
         <input 
             type="text" 
             v-model="titleInput"
-            @blur="changeRenderedText"
         />
     </div>
 </template>
 
 <script>    
+    import debounce from '@/assets/functions.js'
     export default {
         name: 'EditableHeader',
         props: ['city'],
@@ -18,20 +18,27 @@
             }
         },
         methods: {
-            changeRenderedText(e) {
-                const value = e.target.value;
-                if(value === '') {
+            changeRenderedText() {
+                if(this.titleInput === '') {
                     return
                 }
-                this.titleInput = value
-                this.$emit('queried', value)
+                this.$emit('queried', this.titleInput)
+                console.log('im here')
             },        
+        },
+        created: function() {
+            this.debouncedQuery = debounce(this.changeRenderedText, 500)
+        },
+        watch: {
+            titleInput: function() {
+                this.debouncedQuery()
+            }
         }
         
     };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
     input {
         margin: 0;
         padding: 10px;
