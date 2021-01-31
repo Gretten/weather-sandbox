@@ -1,6 +1,6 @@
 <template>
     <div class="detail-container">
-        <span class="detail-icon"> {{ detailIcon }} </span>
+        <i :class="detailIcon"></i>
         <span class="detail-title"> {{ detailTitle }} </span>
         <span class="detail-data"> {{ detailData }}{{ detailMeasure }} </span>
     </div>

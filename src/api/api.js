@@ -35,25 +35,25 @@ const dataHandler = ( city ) => {
                 {
                     payload: pressure,
                     title: 'Pressure',
-                    icon: '🧱',
+                    icon: 'fas fa-water',
                     measure: 'Pa',
                 },
                 {
                     payload: humidity,
                     title: 'Humidity',
-                    icon: '🌡️',
+                    icon: 'fas fa-temperature-high',
                     measure: '%',
                 },
                 {
                     payload: visibility,
                     title: 'Visibility',
-                    icon: '☁️',
+                    icon: 'fas fa-cloud',
                     measure: 'm',
                 },
                 {
                     payload: speed,
                     title: 'Speed',
-                    icon: '💨',
+                    icon: 'fas fa-wind',
                     measure: 'm/s',
                 },
             ]
