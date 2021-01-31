@@ -33,6 +33,24 @@
                 status: this.weatherStatus,
             }
         },
+        watch: {
+            temp: function(prev, next) {
+                console.log(this.temp)
+                console.log(this.currentTemp)
+                console.log(prev)
+                console.log(next)
+                this.temp = this.currentTemp
+            },
+            tempM: function() {
+                this.temp = this.morningTemp
+            },
+            tempE: function() {
+                this.temp = this.eveningTemp
+            },
+            status: function() {
+                this.status = this.weatherStatus
+            },
+        }
     }
 </script>
 

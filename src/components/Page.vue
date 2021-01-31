@@ -7,6 +7,7 @@
         > 
             <TitleDisplay 
                 :city="city"
+                @queried="makeQuery"
             />
             <WeatherDisplay 
                 :currentIcon="this.weather.mainWeather.icon"
@@ -46,8 +47,17 @@
             }
         },
         methods: {
+            makeQuery(val) {
+                this.uploaded = false;
+              dataHandler(val)
+                .then(res => {
+                    console.log(this)
+                    this.weather = res;
+                    this.uploaded = true;
+                })
+            }
         },
-        mounted: function() {
+        created: function() {
             dataHandler(this.city)
                 .then(res => {
                     this.weather = res;

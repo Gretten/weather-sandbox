@@ -1,40 +1,49 @@
-<template>
-    <div class="component-container">
-        <div class="title-container">
-            <span class="city">{{ city }}</span>
-            <span class="date">{{ currentDate }}, {{ currentTime }}</span>
-        </div>
-
+!<template>
+    <div>
+        <input 
+            type="text" 
+            v-model="titleInput"
+            v-if="editing"
+            @blur="changeRenderedText"
+        />
+        <span
+            @click="showInput"
+            v-else
+        >{{ renderedText }}
+        </span>
     </div>
 </template>
 
-<script>
+<script>    
     export default {
-        name: "TitleDisplay",
-        props: ['city'],
-        data() {
+        name: 'EditableHeader',
+        data () {
             return {
-                currentDate: 'Mon',
-                currentTime: '1:20 am'
+                titleInput: '',
+                renderedText: 'Hello Vue',
+                editing: false,
             }
         },
-    }
+        methods: {
+            changeRenderedText(e) {
+                const value = e.target.value;
+                if(value === '') {
+                    this.renderedText = 'Put the value'
+                    this.editing = false
+                    return
+                }
+                this.renderedText = e.target.value
+                this.editing = false
+                this.$emit('queried', value)
+            },
+            showInput() {
+                this.editing = true
+            }
+        }
+        
+    };
 </script>
 
-<style scoped>
-    .component-container {
-        display: flex;
-        justify-content: center;
-    }
-    .title-container {
-        display: flex;
-        flex-direction: column;
-    }
-    .city {
-        font-size: 25px;
-        padding-bottom: 10px;
-    }
-    .date {
-        color: #a2a6b8;
-    }
+<style lang="scss" scoped>
+
 </style>
