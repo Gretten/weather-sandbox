@@ -9,7 +9,8 @@
 </template>
 
 <script>    
-    const debounce = require('debounce')
+    import debounce from 'debounce';
+    
     export default {
         name: 'EditableHeader',
         props: ['city'],
