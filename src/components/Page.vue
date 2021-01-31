@@ -44,20 +44,16 @@
         methods: {
             makeQuery(val) {
                 this.uploaded = false;
-              dataHandler(val)
-                .then(res => {
-                    console.log(this)
-                    this.weather = res;
-                    this.uploaded = true;
-                })
+                dataHandler(val)
+                    .then(res => {
+                        console.log(this)
+                        this.weather = res;
+                        this.uploaded = true;
+                    })
             }
         },
         created: function() {
-            dataHandler(this.city)
-                .then(res => {
-                    this.weather = res;
-                    this.uploaded = true;
-                })
+            this.makeQuery(this.city)
         }
 
     }
