@@ -3,18 +3,15 @@
         class="page-background"
     >
         <Main
-            v-if="uploaded"
+            
         > 
             <TitleDisplay 
                 :city="city"
                 @queried="makeQuery"
             />
             <WeatherDisplay 
-                :currentIcon="this.weather.mainWeather.icon"
-                :currentTemp="this.weather.mainWeather.temp"
-                :morningTemp="this.weather.mainWeather.temp_min"
-                :eveningTemp="this.weather.mainWeather.temp_max"
-                :weatherStatus="this.weather.mainWeather.main"
+                v-if="uploaded"
+                :details="this.weather.mainWeather"
             />
             <DetailsDisplay 
                 :details="this.weather.details"

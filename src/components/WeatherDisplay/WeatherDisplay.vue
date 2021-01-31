@@ -23,34 +23,16 @@
 <script>
     export default {
         name: "WeatherDisplay",
-        props: ['currentIcon', 'currentTemp', 'morningTemp', 'eveningTemp', 'weatherStatus'],
+        props: ['details'],
         data() {
             return {
                 // icon: '*',
-                temp: this.currentTemp,
-                tempM: this.morningTemp,
-                tempE: this.eveningTemp,
-                status: this.weatherStatus,
+                temp: this.details.temp,
+                tempM: this.details.temp_min,
+                tempE: this.details.temp_max,
+                status: this.details.main,
             }
         },
-        watch: {
-            temp: function(prev, next) {
-                console.log(this.temp)
-                console.log(this.currentTemp)
-                console.log(prev)
-                console.log(next)
-                this.temp = this.currentTemp
-            },
-            tempM: function() {
-                this.temp = this.morningTemp
-            },
-            tempE: function() {
-                this.temp = this.eveningTemp
-            },
-            status: function() {
-                this.status = this.weatherStatus
-            },
-        }
     }
 </script>
 
