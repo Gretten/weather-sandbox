@@ -51,7 +51,6 @@
                 this.uploaded = false;
                 dataHandler(val)
                     .then(res => {
-                        console.log(res)
                         this.weather = res;
                         this.uploaded = true;
                     })

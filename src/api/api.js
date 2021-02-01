@@ -10,7 +10,7 @@ const getServiceResponse = async (city) => {
         let json = await response.json();
         return json;
     } else {
-       console.log("HTTP-Error: " + response.status);
+       console.dir("HTTP-Error: " + response.status);
     }
 }
 

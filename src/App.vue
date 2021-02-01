@@ -25,8 +25,5 @@ export default {
   components: {
     Page
   },
-  mounted: function() {
-    console.log(process.env.VUE_APP_API_KEY)
-  }
 };
 </script>
