@@ -9,13 +9,13 @@
             />
             <WeatherDisplay 
                 v-if="uploaded"
-                :details="this.weather.mainWeather"
+                :details="weather.mainWeather"
             />
             <Spinner 
                 v-else
             />
             <DetailsDisplay 
-                :details="this.weather.details"
+                :details="weather.details"
 
             />
         </Main>

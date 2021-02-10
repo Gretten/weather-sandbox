@@ -1,8 +1,8 @@
 <template>
     <div class="detail-container">
-        <i :class="detailIcon"></i>
-        <span class="detail-title"> {{ detailTitle }} </span>
-        <span class="detail-data"> {{ detailData }}{{ detailMeasure }} </span>
+        <i :class="icon"></i>
+        <span class="detail-title"> {{ title }} </span>
+        <span class="detail-data"> {{ payload }}{{ measure }} </span>
     </div>
 </template>
 
@@ -11,11 +11,12 @@
         name: 'SingleDetail',
         props: ['details'],
         data() {
+            const { icon, title, payload, measure } = this.details;
             return {
-                detailIcon: this.details.icon,
-                detailTitle: this.details.title,
-                detailData: this.details.payload,
-                detailMeasure: this.details.measure,
+                icon,
+                title,
+                payload,
+                measure,
             }
         },
     }
