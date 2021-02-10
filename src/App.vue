@@ -19,7 +19,7 @@ body {
 </style>
 
 <script>
-import Page from '@/components/Page.vue';
+import Page from '@/views/Page.vue';
 
 export default {
   components: {

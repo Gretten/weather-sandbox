@@ -14,7 +14,7 @@
 
 <script>
     import LinedHeader from '@/components/LinedHeader/LinedHeader.vue';
-    import SingleDetail from '@/components/SingleDetail/SingleDetail.vue';
+    import SingleDetail from '@/views/SingleDetail/SingleDetail.vue';
     export default {
         name: "DetailsDisplay",
         props: ['details'],

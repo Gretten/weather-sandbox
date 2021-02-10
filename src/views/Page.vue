@@ -23,10 +23,10 @@
 </template>
 
 <script>
-    import Main from '@/components/Main.vue';
-    import TitleDisplay from '@/components/TitleDisplay/TitleDisplay.vue';
-    import WeatherDisplay from '@/components/WeatherDisplay/WeatherDisplay.vue';
-    import DetailsDisplay from '@/components/DetailsDisplay/DetailsDisplay.vue';
+    import Main from '@/views/Main.vue';
+    import TitleDisplay from '@/views/TitleDisplay/TitleDisplay.vue';
+    import WeatherDisplay from '@/views/WeatherDisplay/WeatherDisplay.vue';
+    import DetailsDisplay from '@/views/DetailsDisplay/DetailsDisplay.vue';
     import Spinner from '@/components/Spinner/Spinner.vue';
     import dataHandler from '@/api/api.js';
 
