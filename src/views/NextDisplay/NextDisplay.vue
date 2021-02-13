@@ -9,7 +9,3 @@
         name: "NextDisplay",
     };
 </script>
-
-<style lang="scss" scoped>
-
-</style>

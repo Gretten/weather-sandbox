@@ -19,12 +19,14 @@
     p {
         text-align: center;
     }
+
     .container {
         display: flex;
         justify-content: center;
         flex-direction: column;
         align-items: center;
     }
+    
     .lds-ripple {
         display: inline-block;
         position: relative;

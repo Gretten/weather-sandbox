@@ -25,9 +25,11 @@
         display: flex;
         flex-direction: row;
     }
+
     .header {
         display: block;
     }
+    
     .border {
         display: block;
         border-bottom: 1px solid #a2a6b8;

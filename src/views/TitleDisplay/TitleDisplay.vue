@@ -44,6 +44,7 @@
         font-size: 23px;
         border-radius: 10px;
     }
+    
     input:focus {
         border: none;
         outline: none;

@@ -1,20 +1,18 @@
 const fetch = require('node-fetch');
 const APIKey = process.env.VUE_APP_API_KEY;
 
-const getServiceResponse = async (city) => {
+const getServiceResponse = async city => {
     const APILink = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`;
 
-    let response = await fetch(APILink);
+    const response = await fetch(APILink);
 
     if (response.ok) { 
         let json = await response.json();
         return json;
-    } else {
-       console.dir("HTTP-Error: " + response.status);
     }
 }
 
-const dataHandler = ( city ) => {
+const dataHandler = city => {
     const json = getServiceResponse(city);
     return json.then(res => {
         if(!res) return false;
