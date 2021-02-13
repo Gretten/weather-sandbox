@@ -17,6 +17,7 @@ const getServiceResponse = async (city) => {
 const dataHandler = ( city ) => {
     const json = getServiceResponse(city);
     return json.then(res => {
+        if(!res) return false;
         // some magic from SO
         let result = Object.assign({}, ...function _flatten(o) { return [].concat(...Object.keys(o).map(k => typeof o[k] === 'object' ? _flatten(o[k]) : ({[k]: o[k]})))}(res))
         
@@ -59,6 +60,8 @@ const dataHandler = ( city ) => {
             ]
         }
         return rez;
+    }).catch(err => {
+        return err;
     })
 }
 

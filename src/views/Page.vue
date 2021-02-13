@@ -51,8 +51,10 @@
                 this.uploaded = false;
                 dataHandler(val)
                     .then(res => {
-                        this.weather = res;
-                        this.uploaded = true;
+                        if(res) {
+                            this.weather = res;
+                            this.uploaded = true;
+                        }
                     })
             }
         },
