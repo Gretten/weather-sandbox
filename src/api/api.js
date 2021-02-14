@@ -1,66 +1,78 @@
-const fetch = require('node-fetch');
+const axios = require('axios');
 const APIKey = process.env.VUE_APP_API_KEY;
 
-const getServiceResponse = async city => {
-    const APILink = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`;
+class OpenWeatherHandler {
+    constructor(apiKey) {
+        this.apiKey = apiKey;
+        this.baseLink = `https://api.openweathermap.org/data/2.5/weather`;
+        this.units = 'metric';
+        this.city = 'Moscow';
+        this.response = null;
+    }
 
-    const response = await fetch(APILink);
+    getFullLink() {
+        let link = `${this.baseLink}?q=${this.city}&units=${this.units}&appid=${this.apiKey}`
+        return link;
+    }
 
-    if (response.ok) { 
-        let json = await response.json();
-        return json;
+    setCity(city) {
+        this.city = city;
+    }
+
+    async getResultData() {
+        this.retrieve();
+        return this.response
+            .then(res => {
+                let data = res.data;
+                let main = data.main;
+                
+                return {
+                    mainWeather: {
+                        city: data.name,
+                        temp: Math.round(main.temp),
+                        minTemp: Math.round(main.temp_min),
+                        maxTemp: Math.round(main.temp_max),
+                        feelsLike: main.feels_like,
+                        currentState: data.weather[0].main,
+                        icon: data.weather[0].icon,
+                    },
+                    details: [
+                        {
+                            payload: main.pressure,
+                            title: 'Pressure',
+                            icon: 'fas fa-water',
+                            measure: 'Pa',
+                        },
+                        {
+                            payload: main.humidity,
+                            title: 'Humidity',
+                            icon: 'fas fa-temperature-high',
+                            measure: '%',
+                        },
+                        {
+                            payload: data.visibility,
+                            title: 'Visibility',
+                            icon: 'fas fa-cloud',
+                            measure: 'm',
+                        },
+                        {
+                            payload: data.wind.speed,
+                            title: 'Speed',
+                            icon: 'fas fa-wind',
+                            measure: 'm/s',
+                        },
+                    ]}
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    retrieve() {
+        this.response = axios.get(this.getFullLink())
     }
 }
 
-const dataHandler = city => {
-    const json = getServiceResponse(city);
-    return json.then(res => {
-        if(!res) return false;
-        // some magic from SO
-        let result = Object.assign({}, ...function _flatten(o) { return [].concat(...Object.keys(o).map(k => typeof o[k] === 'object' ? _flatten(o[k]) : ({[k]: o[k]})))}(res))
-        
-        for (let key in result) {
-              if(typeof result[key] === 'number') {
-                result[key] = Math.round(result[key])
-              }
-          }
+const apiInstance = new OpenWeatherHandler(APIKey);
 
-        const { main, icon, temp, feels_like, temp_min, temp_max, pressure, humidity, visibility, speed } = result;
-        const rez = {
-            mainWeather: { 
-                main, icon, temp, feels_like, temp_min, temp_max 
-            },
-            details: [
-                {
-                    payload: pressure,
-                    title: 'Pressure',
-                    icon: 'fas fa-water',
-                    measure: 'Pa',
-                },
-                {
-                    payload: humidity,
-                    title: 'Humidity',
-                    icon: 'fas fa-temperature-high',
-                    measure: '%',
-                },
-                {
-                    payload: visibility,
-                    title: 'Visibility',
-                    icon: 'fas fa-cloud',
-                    measure: 'm',
-                },
-                {
-                    payload: speed,
-                    title: 'Speed',
-                    icon: 'fas fa-wind',
-                    measure: 'm/s',
-                },
-            ]
-        }
-        return rez;
-    }).catch(err => {
-        return err;
-    })
-}
-
-export default dataHandler;
+export default apiInstance;

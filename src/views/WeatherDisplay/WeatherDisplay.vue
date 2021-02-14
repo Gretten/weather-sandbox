@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="weather-title-container">
-            <!-- <span> {{ icon }} </span> -->
+            <span> {{ currentState }} </span>
             <span>{{ main }}</span>
         </div>
         <div class="weather-block">
@@ -12,8 +12,8 @@
                 </div>
             <div class="today-temp-container">
                 <div class="today-temp">
-                    <span class="morning-temp"> {{ temp_min }}° C</span>
-                    <span class="evening-temp"> {{ temp_min }}° C </span>
+                    <span class="morning-temp"> {{ minTemp }}° C</span>
+                    <span class="evening-temp"> {{ maxTemp }}° C </span>
                 </div>
             </div>
         </div>
@@ -25,11 +25,12 @@
         name: "WeatherDisplay",
         props: ['details'],
         data() {
-            const { temp, temp_min, temp_max, main } = this.details;
+            const { temp, minTemp, maxTemp, main, currentState } = this.details;
             return {
+                currentState,
                 temp,
-                temp_min,
-                temp_max,
+                minTemp,
+                maxTemp,
                 main,
             }
         },

@@ -28,7 +28,7 @@
     import WeatherDisplay from '@/views/WeatherDisplay/WeatherDisplay.vue';
     import DetailsDisplay from '@/views/DetailsDisplay/DetailsDisplay.vue';
     import Spinner from '@/components/Spinner/Spinner.vue';
-    import dataHandler from '@/api/api.js';
+    import apiInstance from '@/api/api.js';
 
     export default {
         name: "Page",
@@ -43,23 +43,24 @@
             return {
                 city: 'Moscow',
                 weather: {},
-                uploaded: false,
+                uploaded: true,
             }
         },
         methods: {
             makeQuery(val) {
                 this.uploaded = false;
-                dataHandler(val)
+                apiInstance.setCity(val);
+                apiInstance.getResultData()
                     .then(res => {
-                        if(res) {
-                            this.weather = res;
-                            this.uploaded = true;
-                        }
+                        if(!res) return;
+                        this.weather = res
+                        this.uploaded = true
                     })
+
             }
         },
         created: function() {
-            this.makeQuery(this.city)
+                this.makeQuery(this.city)
         }
 
     }
@@ -68,7 +69,7 @@
 <style scoped>
     .page-background {
         height: 100vh;
-        background: rgb(183,195,207);
+        background: rgb(183,195,208);
         background: linear-gradient(0deg, rgba(183,195,207,1) 0%, rgba(236,240,251,1) 100%);
         display: flex;
         flex-direction: column;
