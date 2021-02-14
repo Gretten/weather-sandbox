@@ -1,5 +1,5 @@
 const axios = require('axios');
-import objectBuilder from '@/assets/helpers.js'
+import { objectBuilder, errorHandler } from '@/assets/helpers.js'
 const APIKey = process.env.VUE_APP_API_KEY;
 
 class OpenWeatherApi {
@@ -27,7 +27,7 @@ class OpenWeatherApi {
     getWeather() {
         return axios.get(this.getApiUrl())
             .then(objectBuilder)
-            .catch(console.error)
+            .catch(errorHandler)
     }
 }
 

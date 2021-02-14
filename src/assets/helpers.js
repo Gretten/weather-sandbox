@@ -1,4 +1,4 @@
-const objectBuilder = response => {
+export const objectBuilder = response => {
     let data = response.data;
     let main = data.main;
 
@@ -40,4 +40,6 @@ const objectBuilder = response => {
     }
 }
 
-export default objectBuilder;
+export const errorHandler = error => {
+    return console.log(error)
+}
