@@ -5,11 +5,10 @@ class OpenWeatherApi {
     constructor(apiKey) {
         this.apiKey = apiKey;
         this.units = 'metric';
-        this.city = 'Moscow';
+        this.city = '';
         this.response = null;
+        this.baselink = 'https://api.openweathermap.org/data/2.5/weather';
     }
-
-    baselink = 'https://api.openweathermap.org/data/2.5/weather';
 
     setCity(city) {
         this.city = city;
@@ -20,10 +19,30 @@ class OpenWeatherApi {
     }
     
     getApiUrl() {
-        return `${this.baseLink}?q=${this.city}&units=${this.units}&appid=${this.apiKey}`;
+        return `${this.baselink}?q=${this.city}&units=${this.units}&appid=${this.apiKey}`;
     } 
 
-    weatherObjectBuilder(response) {
+    objectBuilder(response) {
+        return response;
+    }
+
+    getWeather() {
+        return axios.get(this.getApiUrl())
+            .then(res => {
+                return this.objectBuilder(res)
+            })
+            .catch((err) => {
+                return console.log(err)
+        })
+    }
+}
+
+class OpenWeatherBuilder extends OpenWeatherApi {
+    constructor(apiKey) {
+        super(apiKey)
+    }
+
+    objectBuilder(response) {
         let data = response.data;
         let main = data.main;
 
@@ -65,18 +84,8 @@ class OpenWeatherApi {
             ]
         }
     }
-
-    getWeather() {
-        return axios.get(this.getApiUrl())
-            .then(res => {
-                return this.weatherObjectBuilder(res)
-            })
-            .catch((err) => {
-                return console.log(err)
-        })
-    }
 }
 
-const apiInstance = new OpenWeatherApi(APIKey);
+const apiInstance = new OpenWeatherBuilder(APIKey);
 
 export default apiInstance;
