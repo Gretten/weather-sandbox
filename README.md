@@ -1,4 +1,4 @@
-# The beautiful weather app powered by Vue.JS
+# This is a beautiful weather app powered by Vue.JS
 ```
 This little application can display the current weather for any city on the earth. 
 
