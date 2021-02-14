@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios'
 import { objectBuilder, errorHandler } from '@/assets/helpers.js'
 const APIKey = process.env.VUE_APP_API_KEY;
 

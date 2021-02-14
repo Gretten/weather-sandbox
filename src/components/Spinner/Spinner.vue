@@ -4,7 +4,7 @@
         <div></div>
         <div></div>
     </div>
-    <p>Loading, please wait...</p>
+    <p>{{ errorMessage }}</p>
 </div>
     
 </template>
@@ -12,12 +12,25 @@
 <script>
     export default {
         name: 'Spinner',
+        props: ['error'],
+        data() {
+            return {
+                errorMessage: this.error.errorName,
+            }
+        },
+        watch: {
+            errorMessage: function(val) {
+                this.errorMessage = val;
+            } 
+        }
+
     }
 </script>
 
 <style scoped>
     p {
         text-align: center;
+        font-size: 20px;
     }
 
     .container {

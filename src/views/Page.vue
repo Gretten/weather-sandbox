@@ -24,6 +24,7 @@
             </div>
              <Spinner 
                 v-else
+                :error="errorState"
             />      
         </Main>
        
@@ -51,6 +52,7 @@
             return {
                 city: 'Moscow',
                 weather: {},
+                errorState: {},
                 uploaded: true,
             }
         },
@@ -60,9 +62,11 @@
                 apiInstance.setCity(val);
                 apiInstance.getWeather()
                     .then(res => {
-                        if(!res) return;
-                        this.weather = res
-                        this.uploaded = true
+                        if(res.isError) {
+                           return this.errorState = res;
+                        }
+                        this.weather = res;
+                        this.uploaded = true;
                     })
 
             }

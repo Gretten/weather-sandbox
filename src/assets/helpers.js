@@ -1,8 +1,9 @@
 export const objectBuilder = response => {
     let data = response.data;
     let main = data.main;
-
+    console.log(response)
     return {
+        status: response.status,
         mainWeather: {
             city: data.name,
             temp: Math.round(main.temp),
@@ -41,5 +42,9 @@ export const objectBuilder = response => {
 }
 
 export const errorHandler = error => {
-    return console.log(error)
+    return {
+        isError: true,
+        errorName: error.response.statusText,
+
+    }
 }
