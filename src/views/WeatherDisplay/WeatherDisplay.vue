@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="weather-display">
         <div class="weather-title-container">
             <span> {{ currentState }} </span>
             <span>{{ main }}</span>
@@ -38,6 +38,9 @@
 </script>
 
 <style lang="scss" scoped>
+    .weather-display {
+        margin-bottom: 30px;
+    }
     .weather-title-container {
         font-size: 40px;
         text-align: left;

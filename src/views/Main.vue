@@ -20,6 +20,13 @@
         max-width: 364px;
         min-height: 647px;
         padding: 25px;
+        min-width: 363px;
+    }
+
+    @media screen and (max-width: 756px) {
+        .main {
+            min-width: none;
+        }
     }
         
 </style>

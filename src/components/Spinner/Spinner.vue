@@ -25,6 +25,7 @@
         justify-content: center;
         flex-direction: column;
         align-items: center;
+        height: 100%;
     }
     
     .lds-ripple {
