@@ -1,7 +1,6 @@
 export const objectBuilder = response => {
     let data = response.data;
     let main = data.main;
-    console.log(response)
     return {
         status: response.status,
         mainWeather: {
@@ -41,9 +40,10 @@ export const objectBuilder = response => {
     }
 }
 
-export const errorHandler = error => {
+export const errorHandler = (error) => {
     return {
         isError: true,
+        errorCode: error.response.status,
         errorName: error.response.statusText,
 
     }

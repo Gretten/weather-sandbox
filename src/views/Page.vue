@@ -23,9 +23,9 @@
                 />      
             </div>
              <Spinner 
-                v-else
+                v-if="errorState.isError"
                 :error="errorState"
-            />      
+            />
         </Main>
        
     </div>
@@ -63,8 +63,10 @@
                 apiInstance.getWeather()
                     .then(res => {
                         if(res.isError) {
-                           return this.errorState = res;
+                           this.errorState = res;
+                           return;
                         }
+                        this.errorState.isError ? this.errorState = {} : false;
                         this.weather = res;
                         this.uploaded = true;
                     })

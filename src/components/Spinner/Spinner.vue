@@ -4,7 +4,7 @@
         <div></div>
         <div></div>
     </div>
-    <p>{{ errorMessage }}</p>
+    <p>{{ errorData.errorName }}</p>
 </div>
     
 </template>
@@ -15,15 +15,9 @@
         props: ['error'],
         data() {
             return {
-                errorMessage: this.error.errorName,
+                errorData: this.error
             }
         },
-        watch: {
-            errorMessage: function(val) {
-                this.errorMessage = val;
-            } 
-        }
-
     }
 </script>
 
