@@ -1,24 +1,14 @@
 # project-waether
+```
+This little application can show current weather for any city on the Earth. 
+
+Actually, the meaning of the project is to demonstrate my skills.
+```
 
 ## Project setup
 ```
-npm install
+1. git clone ${project-link}
+2. npm install 
+3. Create an .env file with the VUE_APP_API_KEY contant and your Open Weather API key inside.
+4. npm run serve (or npm run build for production)
 ```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
