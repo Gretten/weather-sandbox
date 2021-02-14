@@ -1,6 +1,6 @@
-# project-weather
+# The beautiful weather app powered by Vue.JS
 ```
-This little application can display the current weather for any city on the Earth. 
+This little application can display the current weather for any city on the earth. 
 
 Actually, the meaning of the project is to demonstrate my skills.
 ```
