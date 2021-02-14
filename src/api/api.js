@@ -4,13 +4,24 @@ const APIKey = process.env.VUE_APP_API_KEY;
 class OpenWeatherApi {
     constructor(apiKey) {
         this.apiKey = apiKey;
-        this.baseLink = `https://api.openweathermap.org/data/2.5/weather`;
         this.units = 'metric';
         this.city = 'Moscow';
         this.response = null;
     }
 
-    getApiUrl = () => `${this.baseLink}?q=${this.city}&units=${this.units}&appid=${this.apiKey}`;
+    baselink = 'https://api.openweathermap.org/data/2.5/weather';
+
+    setCity(city) {
+        this.city = city;
+    }
+
+    setUnits(units) {
+        this.units = units;
+    }
+    
+    getApiUrl() {
+        return `${this.baseLink}?q=${this.city}&units=${this.units}&appid=${this.apiKey}`;
+    } 
 
     weatherObjectBuilder(response) {
         let data = response.data;
@@ -55,27 +66,14 @@ class OpenWeatherApi {
         }
     }
 
-    setCity(city) {
-        this.city = city;
-    }
-
-    setUnits(units) {
-        this.units = units;
-    }
-
     getWeather() {
-        this.retrieve();
-        return this.response
+        return axios.get(this.getApiUrl())
             .then(res => {
                 return this.weatherObjectBuilder(res)
             })
             .catch((err) => {
                 return console.log(err)
-            })
-    }
-
-    retrieve() {
-        this.response = axios.get(this.getApiUrl())
+        })
     }
 }
 
