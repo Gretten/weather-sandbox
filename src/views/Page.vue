@@ -2,23 +2,31 @@
     <div 
         class="page-background"
     >
-        <Main> 
-            <TitleDisplay 
-                :city="city"
-                @queried="makeQuery"
-            />
-            <WeatherDisplay 
+        <Main
+            
+        > 
+        <TitleDisplay 
+            :city="city"
+            @queried="makeQuery"
+        />
+            <div
                 v-if="uploaded"
-                :details="weather.mainWeather"
-            />
-            <Spinner 
-                v-else
-            />
-            <DetailsDisplay 
-                :details="weather.details"
+            >
+                
+                <WeatherDisplay 
+                    :details="weather.mainWeather"
+                />
 
-            />
+                <DetailsDisplay 
+                    :details="weather.details"
+
+                />      
+            </div>
+             <Spinner 
+                v-else
+            />      
         </Main>
+       
     </div>
 </template>
 
