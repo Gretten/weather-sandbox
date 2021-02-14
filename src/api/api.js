@@ -1,8 +1,6 @@
 import axios from 'axios'
 import { objectBuilder, errorHandler } from '@/assets/helpers.js'
-// const APIKey = process.env.VUE_APP_API_KEY;
-const APIKey = 'a0408c4d5fded32e057194a7540e3f41';
-
+const APIKey = process.env.VUE_APP_API_KEY;
 
 class OpenWeatherApi {
     constructor(apiKey) {
