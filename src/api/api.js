@@ -19,7 +19,7 @@ class OpenWeatherHandler {
         this.city = city;
     }
 
-    async getResultData() {
+    getResultData() {
         this.retrieve();
         return this.response
             .then(res => {
@@ -63,8 +63,8 @@ class OpenWeatherHandler {
                         },
                     ]}
             })
-            .catch(err => {
-                console.log(err)
+            .catch((err) => {
+                return console.log(err)
             })
     }
 
