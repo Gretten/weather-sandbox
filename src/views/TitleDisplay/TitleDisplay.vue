@@ -2,7 +2,7 @@
     <div>
         <input 
             type="text" 
-            v-model="titleInput"
+            v-model.trim="titleInput"
             @keyup="keyupTrigger"
         />
     </div>
