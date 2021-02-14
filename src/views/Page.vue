@@ -58,7 +58,7 @@
             makeQuery(val) {
                 this.uploaded = false;
                 apiInstance.setCity(val);
-                apiInstance.getResultData()
+                apiInstance.getWeather()
                     .then(res => {
                         if(!res) return;
                         this.weather = res

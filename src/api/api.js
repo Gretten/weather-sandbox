@@ -1,7 +1,7 @@
 const axios = require('axios');
 const APIKey = process.env.VUE_APP_API_KEY;
 
-class OpenWeatherHandler {
+class OpenWeatherApi {
     constructor(apiKey) {
         this.apiKey = apiKey;
         this.baseLink = `https://api.openweathermap.org/data/2.5/weather`;
@@ -10,16 +10,17 @@ class OpenWeatherHandler {
         this.response = null;
     }
 
-    getFullLink() {
-        let link = `${this.baseLink}?q=${this.city}&units=${this.units}&appid=${this.apiKey}`
-        return link;
-    }
+    #getApiUrl = () => `${this.baseLink}?q=${this.city}&units=${this.units}&appid=${this.apiKey}`;
 
     setCity(city) {
         this.city = city;
     }
 
-    getResultData() {
+    setUnits(units) {
+        this.units = units;
+    }
+
+    getWeather() {
         this.retrieve();
         return this.response
             .then(res => {
@@ -69,10 +70,10 @@ class OpenWeatherHandler {
     }
 
     retrieve() {
-        this.response = axios.get(this.getFullLink())
+        this.response = axios.get(this.#getApiUrl())
     }
 }
 
-const apiInstance = new OpenWeatherHandler(APIKey);
+const apiInstance = new OpenWeatherApi(APIKey);
 
 export default apiInstance;
