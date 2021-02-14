@@ -1,4 +1,4 @@
-# project-waether
+# project-weather
 ```
 This little application can display the current weather for any city on the Earth. 
 
