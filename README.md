@@ -1,6 +1,6 @@
 # project-waether
 ```
-This little application can show current weather for any city on the Earth. 
+This little application can display the current weather for any city on the Earth. 
 
 Actually, the meaning of the project is to demonstrate my skills.
 ```
