@@ -48,3 +48,15 @@ export const errorHandler = (error) => {
 
     }
 }
+
+export function responseCache(func) {
+    let cache = new Map();
+    return function(query) {
+        if(cache.has(query)) {
+            return cache.get(query)
+        }
+        let result = func.apply(this, arguments);
+        cache.set(query, result);
+        return result;
+    }
+}

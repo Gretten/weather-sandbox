@@ -38,6 +38,7 @@
     import DetailsDisplay from '@/views/DetailsDisplay/DetailsDisplay.vue';
     import Spinner from '@/components/Spinner/Spinner.vue';
     import apiInstance from '@/api/api.js';
+    import { responseCache } from '@/assets/helpers.js'
 
     export default {
         name: "Page",
@@ -60,7 +61,8 @@
             makeQuery(val) {
                 this.uploaded = false;
                 apiInstance.setCity(val);
-                apiInstance.getWeather()
+                apiInstance.getWeather = responseCache(apiInstance.getWeather);
+                apiInstance.getWeather(val)
                     .then(res => {
                         if(res.isError) {
                            this.errorState = res;
@@ -70,8 +72,7 @@
                         this.weather = res;
                         this.uploaded = true;
                     })
-
-            }
+            },
         },
         created: function() {
                 this.makeQuery(this.city)
