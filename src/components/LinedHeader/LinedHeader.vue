@@ -2,7 +2,7 @@
     <div>
         <div class="container">
             <span class="header">
-                {{ header }}
+                {{ this.header }}
             </span>
             <div class="border"></div>
         </div>
@@ -12,11 +12,7 @@
 <script>
     export default {
         name: "LinedHeader",
-        data() {
-            return {
-                header: "Details"
-            }
-        },
+        props: ['header'],
     }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
     <div>
-       <LinedHeader />
+       <LinedHeader header="Details" />
        <div class="details-container"
        >
            <SingleDetail 
